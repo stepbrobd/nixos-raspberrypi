@@ -85,16 +85,14 @@ in
   postFixup = let
     armArch = if stdenv.isAarch64 then "arm64" else "arm";
   in ''
-    # Provide overlays together with README just like `raspberrypifw`
-    # (https://github.com/raspberrypi/firmware/) does
-    # Raspberry's bootloader may check if it's present in `overlays/` on
-    # FIRMWARE partition
-    # see
+    # Provide README together with overlays just like `raspberrypifw`
+    # (https://github.com/raspberrypi/firmware/) does.
+    # Raspberry's bootloader may check if README is present in `overlays/` on
+    # the FIRMWARE partition, see:
     # * https://www.raspberrypi.com/documentation/computers/config_txt.html#os_prefix
     # * https://www.raspberrypi.com/documentation/computers/config_txt.html#overlay_prefix
 
-    # `src` is, unfortunately, unset in postPatch for linux
-    # see:
+    # `src` is, unfortunately, unset in postPatch for linux, see:
     # * https://github.com/NixOS/nixpkgs/blob/be281b772565298a2e0b18138df2e25cbf838521/pkgs/os-specific/linux/kernel/manual-config.nix#L290
     # * https://github.com/NixOS/nixpkgs/pull/332180
     # assume linux needs only one source archive, so that srcs is always single path
