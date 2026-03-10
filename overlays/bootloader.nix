@@ -17,13 +17,13 @@ self: super: {
   };
 
   uefi_rpi3 = super.fetchzip {
-    url = "https://github.com/pftf/RPi3/releases/download/v1.39/RPi3_UEFI_Firmware_v1.39.zip";
-    hash = super.lib.fakeHash;
+    url = "https://github.com/pftf/RPi3/releases/download/v1.50/RPi3_UEFI_Firmware_v1.50.zip";
+    hash = "sha256-R+hQn/Rgpg4ItSMOr0DiwOqgaQWz6m+WmPmdiid1yPE=";
     stripRoot = false;
   };
   uefi_rpi4 = super.fetchzip {
-    url = "https://github.com/pftf/RPi4/releases/download/v1.38/RPi4_UEFI_Firmware_v1.38.zip";
-    hash = super.lib.fakeHash;
+    url = "https://github.com/pftf/RPi4/releases/download/v1.50/RPi4_UEFI_Firmware_v1.50.zip";
+    hash = "sha256-g8046/Ox0hZgvU6u3ZfC6HMqoTME0Y7NsZD6NvUsp7w=";
     stripRoot = false;
   };
   # https://github.com/worproject/rpi5-uefi/
