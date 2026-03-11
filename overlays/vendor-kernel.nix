@@ -35,11 +35,11 @@ let
 
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/kernel/linux-rpi.nix
       # overriding other override like this doesn't work
-      # linux_rpi5 = self.linux_rpi4.override {
+      # linux_rpi5 = final.linux_rpi4.override {
       #   rpiVersion = 5;
       #   argsOverride.defconfig = "bcm2712_defconfig";
       # };
-      # linux_rpi5_v6_6_28 = self.linux_rpi4_v6_6_28.override {
+      # linux_rpi5_v6_6_28 = final.linux_rpi4_v6_6_28.override {
       #   rpiVersion = 5;
       #   argsOverride = (linux_v6_6_28_argsOverride pkgs) // {
       #     defconfig = "bcm2712_defconfig";
@@ -48,16 +48,16 @@ let
     };
   in map linuxVersionForModel models;
 
-in self: super: super.lib.mergeAttrsList (
+in final: prev: prev.lib.mergeAttrsList (
   builtins.concatLists [
-    (mkLinuxFor super "6_12_47" [ "02" "3" "4" "5" ])
-    (mkLinuxFor super "6_12_44" [ "02" "3" "4" "5" ])
-    (mkLinuxFor super "6_12_34" [ "02" "3" "4" "5" ])
-    (mkLinuxFor super "6_12_25" [ "02" "3" "4" "5" ])
-    (mkLinuxFor super "6_6_74" [ "02" "4" "5" ])
-    (mkLinuxFor super "6_6_51" [ "02" "4" "5" ])
-    (mkLinuxFor super "6_6_31" [ "4" "5" ])
-    (mkLinuxFor super "6_6_28" [ "4" "5" ])
-    (mkLinuxFor super "6_1_73" [ "4" "5" ])
-    (mkLinuxFor super "6_1_63" [ "4" "5" ])
+    (mkLinuxFor prev "6_12_47" [ "02" "3" "4" "5" ])
+    (mkLinuxFor prev "6_12_44" [ "02" "3" "4" "5" ])
+    (mkLinuxFor prev "6_12_34" [ "02" "3" "4" "5" ])
+    (mkLinuxFor prev "6_12_25" [ "02" "3" "4" "5" ])
+    (mkLinuxFor prev "6_6_74" [ "02" "4" "5" ])
+    (mkLinuxFor prev "6_6_51" [ "02" "4" "5" ])
+    (mkLinuxFor prev "6_6_31" [ "4" "5" ])
+    (mkLinuxFor prev "6_6_28" [ "4" "5" ])
+    (mkLinuxFor prev "6_1_73" [ "4" "5" ])
+    (mkLinuxFor prev "6_1_63" [ "4" "5" ])
   ])
