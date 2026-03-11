@@ -12,7 +12,7 @@ let
 
     render-kvs = kvs: let
       render-kv = k: v:
-        if isNull v.value then k
+        if v.value == null then k
         else "${k}=${toString v.value}";
     in lib.attrsets.mapAttrsToList render-kv
         (lib.filterAttrs (k: v: v.enable) kvs);
