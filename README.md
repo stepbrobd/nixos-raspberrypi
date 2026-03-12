@@ -146,6 +146,18 @@ Options for a more fine-grained control:
 - Use regular `nixpkgs.lib.nixosSystem` importing the modules manually, see
 below
 
+> [!IMPORTANT]
+> When using `nixpkgs.lib.nixosSystem` directly you **must** pass
+> `nixos-raspberrypi` in `specialArgs` so that board modules can find the
+> flake reference:
+> ```nix
+> nixpkgs.lib.nixosSystem {
+>   specialArgs = { inherit (inputs) nixos-raspberrypi; };
+>   modules = [ ... ];
+> };
+> ```
+> The `nixos-raspberrypi.lib.nixosSystem` helpers do this automatically.
+
 ```nix
 imports = with nixos-raspberrypi.nixosModules; [
 
