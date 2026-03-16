@@ -40,6 +40,18 @@ final: prev: {
     ffmpegVariant = "full";
   };
 
+  ffmpeg_8 = (
+    prev.callPackage ../pkgs/ffmpeg_8-rpi.nix {
+      ffmpeg = prev.ffmpeg_8;
+    }
+  ); # small
+  ffmpeg_8-headless = final.ffmpeg_8.override {
+    ffmpegVariant = "headless";
+  };
+  ffmpeg_8-full = final.ffmpeg_8.override {
+    ffmpegVariant = "full";
+  };
+
 
   kodi = (prev.kodi.overrideAttrs (old: {
     pname = old.pname + "-rpi";
