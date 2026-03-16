@@ -38,7 +38,7 @@ in final: prev: {
 
   linuxAndFirmware = prev.lib.mergeAttrsList [
 
-    { default = final.linuxAndFirmware.v6_12_34; }
+    { default = final.linuxAndFirmware.v6_12_47; }
 
     { latest = final.linuxAndFirmware.v6_12_47; }
 
