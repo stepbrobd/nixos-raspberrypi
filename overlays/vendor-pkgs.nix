@@ -1,17 +1,17 @@
-self: super: { # final: prev:
+final: prev: {
 
-  libraspberrypi = super.callPackage ../pkgs/raspberrypi/libraspberrypi.nix {};
+  libraspberrypi = prev.callPackage ../pkgs/raspberrypi/libraspberrypi.nix {};
 
-  raspberrypi-userland = self.libraspberrypi;
+  raspberrypi-userland = final.libraspberrypi;
 
-  raspberrypi-udev-rules = super.callPackage ../pkgs/raspberrypi/udev-rules.nix {};
+  raspberrypi-udev-rules = prev.callPackage ../pkgs/raspberrypi/udev-rules.nix {};
 
-  raspberrypi-utils = super.callPackage ../pkgs/raspberrypi/raspberrypi-utils.nix {};
+  raspberrypi-utils = prev.callPackage ../pkgs/raspberrypi/raspberrypi-utils.nix {};
 
-  rpi-userland = self.libraspberrypi;
+  rpi-userland = final.libraspberrypi;
 
-  rpicam-apps = super.callPackage ../pkgs/raspberrypi/rpicam-apps.nix {
-    libcamera = self.libcamera_rpi;
+  rpicam-apps = prev.callPackage ../pkgs/raspberrypi/rpicam-apps.nix {
+    libcamera = final.libcamera_rpi;
   };
 
 }
