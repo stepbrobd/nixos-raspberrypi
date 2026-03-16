@@ -140,6 +140,8 @@
       ffmpeg_6 = pkgs.ffmpeg_6;
       ffmpeg_7 = pkgs.ffmpeg_7;
       ffmpeg_7-headless = pkgs.ffmpeg_7-headless;
+      ffmpeg_8 = pkgs.ffmpeg_8;
+      ffmpeg_8-headless = pkgs.ffmpeg_8-headless;
 
       kodi = pkgs.kodi;
       kodi-gbm = pkgs.kodi-gbm;
