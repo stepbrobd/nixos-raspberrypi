@@ -1,8 +1,8 @@
 final: prev: {
 
-  ffmpeg = final.ffmpeg_7;
-  ffmpeg-headless = final.ffmpeg_7-headless;
-  ffmpeg-full = final.ffmpeg_7-full;
+  ffmpeg = final.ffmpeg_8;
+  ffmpeg-headless = final.ffmpeg_8-headless;
+  ffmpeg-full = final.ffmpeg_8-full;
 
   ffmpeg_4 = (
     prev.callPackage ../pkgs/ffmpeg_4-rpi.nix {
