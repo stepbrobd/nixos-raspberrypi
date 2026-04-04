@@ -122,14 +122,14 @@ final: prev: {
 
   vlc = prev.vlc.overrideAttrs (old: {
     pname = old.pname + "-rpi";
-    version = "3.0.22-0+rpt1";
+    version = "3.0.23";
 
     # https://github.com/RPi-Distro/vlc/commits/pios/trixie
     src = prev.fetchFromGitHub {
       owner = "RPi-Distro";
       repo = "vlc";
-      rev = "1e4f72f9f7af4de546c90062c248f6174af69f28";
-      hash = "sha256-uuCRpv+tZ63KGOQJ9eejx7WNfzWpTAMkxoLGQNj0og0=";
+      rev = "88272ce2fbf0ef1671ea64bda9eb6b44fdc4391f";
+      hash = "sha256-/BTXZX8BG1B9FOetYbfE8kAkZRN+2LOy1FDgwLEwucw=";
     };
   });
 
