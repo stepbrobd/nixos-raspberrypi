@@ -9,6 +9,8 @@
 , version ? null
 , source ? null
 , ffmpegVariant ? "small"
+, excludePatches ? []  # patch filenames (substrings) to filter out
+, extraPatches ? []    # additional patches to apply
 }:
 
 let
@@ -18,6 +20,12 @@ in (ffmpeg.overrideAttrs (old: {
   pname = old.pname + "-rpi";
 
   doCheck = false;  # disabled because `imgutils` test fails
+
+  patches = let
+    shouldExclude = p: builtins.any (ex:
+      lib.hasInfix ex (builtins.baseNameOf (builtins.toString p))
+    ) excludePatches;
+  in builtins.filter (p: !shouldExclude p) (old.patches or []) ++ extraPatches;
 
   # see also
   # https://github.com/jc-kynesim/rpi-ffmpeg/blob/release/4.4/rpi_import_1/pi-util/conf_native.sh#L85
