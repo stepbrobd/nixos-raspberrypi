@@ -93,13 +93,13 @@ final: prev: {
 
   libcamera_rpi = prev.libcamera.overrideAttrs (old: rec {
     pname = old.pname + "-rpi";
-    version = "0.6.0+rpt20251202";
+    version = "0.7.0+rpt20260205";
 
     src = prev.fetchFromGitHub {
       owner = "raspberrypi";
       repo = "libcamera";
       rev = "v${version}";
-      hash = "sha256-sJKzmeeXD/66P5o+X9w3J2gwxDNsdBUdXEqU6goJdN4=";
+      hash = "sha256-ZSKNeFDedqzcVxoLPap2dMjq+F3C1eQ+HikEKuGBOyM=";
     };
 
     mesonFlags = old.mesonFlags ++ [
@@ -112,6 +112,7 @@ final: prev: {
       "-Dcam=disabled"
       "-Dpycamera=enabled"
       (prev.lib.mesonEnable "libunwind" false)
+      (prev.lib.mesonEnable "rpi-awb-nn" false) # needs tensorflow-lite
     ];
 
     meta = old.meta // {
