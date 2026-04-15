@@ -13,6 +13,7 @@ let
   linux = listToAttrsWLVer (import ./linux-sources.nix);
 
 in listToAttrsWLVer [
+  linux.v6_12_75
   linux.v6_12_47
   linux.v6_12_44
   linux.v6_12_34
