@@ -11,7 +11,8 @@ let
       linuxPackages_rpi4 = final.linuxPackagesFor linux_rpi4;
       linuxPackages_rpi3 = final.linuxPackagesFor linux_rpi3;
       linuxPackages_rpi02 = final.linuxPackagesFor linux_rpi02;
-    } // (with firmware; {
+    }
+    // (with firmware; {
       # Matching versions of the firmware to the kernel:
       # - https://downloads.raspberrypi.com/raspios_arm64/release_notes.txt
       # - `extra/git_hash` https://github.com/raspberrypi/firmware/ matches
@@ -27,14 +28,21 @@ let
       raspberrypiWirelessFirmware = wFw;
     });
   };
-in final: prev: {
+in
+final: prev: {
 
   inherit (final.linuxAndFirmware.default)
-    linux_rpi5 linuxPackages_rpi5
-    linux_rpi4 linuxPackages_rpi4
-    linux_rpi3 linuxPackages_rpi3
-    linux_rpi02 linuxPackages_rpi02
-    raspberrypifw raspberrypiWirelessFirmware;
+    linux_rpi5
+    linuxPackages_rpi5
+    linux_rpi4
+    linuxPackages_rpi4
+    linux_rpi3
+    linuxPackages_rpi3
+    linux_rpi02
+    linuxPackages_rpi02
+    raspberrypifw
+    raspberrypiWirelessFirmware
+    ;
 
   linuxAndFirmware = prev.lib.mergeAttrsList [
 
