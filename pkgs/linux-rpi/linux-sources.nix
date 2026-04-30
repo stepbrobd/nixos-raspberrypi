@@ -20,7 +20,7 @@
   {
     # https://github.com/raspberrypi/linux/releases/tag/stable_20250702
     modDirVersion = "6.12.34";
-    tag = "stable_20250702";  # 8f77e03530f65209a377d25023e912b288e039cd
+    tag = "stable_20250702"; # 8f77e03530f65209a377d25023e912b288e039cd
     srcHash = "sha256-lK0esjFhLvtBbyddMfa1H7ZcBbcOm2ygor338ZT5VpI=";
   }
   {
