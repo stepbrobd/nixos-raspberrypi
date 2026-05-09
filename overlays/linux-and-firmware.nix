@@ -46,9 +46,14 @@ final: prev: {
 
   linuxAndFirmware = prev.lib.mergeAttrsList [
 
-    { default = final.linuxAndFirmware.v6_12_85; }
+    { default = final.linuxAndFirmware.v6_12_87; }
 
-    { latest = final.linuxAndFirmware.v6_12_85; }
+    { latest = final.linuxAndFirmware.v6_12_87; }
+
+    (mkBundle final "v6_12_87" {
+      fw = final.raspberrypifw_20260408;
+      wFw = final.raspberrypiWirelessFirmware_20251008;
+    })
 
     (mkBundle final "v6_12_85" {
       fw = final.raspberrypifw_20260408;
