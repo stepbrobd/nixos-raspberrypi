@@ -1,5 +1,11 @@
 [
   {
+    modDirVersion = "6.12.87";
+    tag = "unstable_20260509";
+    rev = "ae4d75fb36deba0fe1a986d9bfae65755e082dd0"; # 6.12.87
+    srcHash = "sha256-vAjVe2f3+1+6HZCp7hfCEvS4XE2OveIRe/+3+oSFdZI=";
+  }
+  {
     modDirVersion = "6.12.85";
     tag = "unstable_20260430";
     rev = "effcbc88e3ab970a2d2aafdfe7c9333766f7139a"; # 6.12.85
