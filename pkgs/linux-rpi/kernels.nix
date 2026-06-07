@@ -23,6 +23,7 @@ let
 
 in
 listToAttrsWLVer [
+  linux.v6_18_34
   linux.v6_18_33
   linux.v6_12_87
   linux.v6_12_85
