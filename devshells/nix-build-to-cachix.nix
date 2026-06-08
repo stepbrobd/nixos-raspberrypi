@@ -1,8 +1,16 @@
-{ writeShellApplication, jq, cachix, ... }:
+{
+  writeShellApplication,
+  jq,
+  cachix,
+  ...
+}:
 
 writeShellApplication {
   name = "nix-build-to-cachix";
-  runtimeInputs = [ jq cachix ];
+  runtimeInputs = [
+    jq
+    cachix
+  ];
   text = ''
     set -euo pipefail
 
@@ -13,9 +21,8 @@ writeShellApplication {
     build_and_push() {
       local target="$1"
 
-      nix build "''${target}" --json \
-        | jq -r '.[].outputs | to_entries[].value' \
-        | cachix push "''${CACHE}"
+      paths=$(nix build "''${target}" --json | jq -r '.[].outputs | to_entries[].value')
+      echo "$paths" | cachix push "''${CACHE}"
     }
 
     build_and_push_nixos() {

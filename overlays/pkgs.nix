@@ -52,31 +52,39 @@ final: prev: {
     ffmpegVariant = "full";
   };
 
-
-  kodi = (prev.kodi.overrideAttrs (old: {
-    pname = old.pname + "-rpi";
-    buildInputs = old.buildInputs ++ [ final.dav1d ];
-    cmakeFlags = let
-      enableFeature = enable: feature:
-        assert (prev.lib.isString feature);
-        "-DENABLE_${feature}=${if enable then "ON" else "OFF"}";
-    in old.cmakeFlags ++ [
-      "-DENABLE_INTERNAL_DAV1D=OFF"
-    ] ++ [
-      # inspired by being hardcoded in libreelec
-      # leaving because this is potentially due to performance considerations
-      "-DENABLE_LCMS2=OFF"
-    ] ++ [
-      (enableFeature true  "NEON")
-      (enableFeature false "VAAPI")
-    ] ++ [
-      "-DENABLE_CEC=ON"
-      "-DENABLE_AVAHI=ON"
-      #-DAPP_RENDER_SYSTEM=
-    ];
-  })).override {
-    vdpauSupport = false;
-  };
+  kodi =
+    (prev.kodi.overrideAttrs (old: {
+      pname = old.pname + "-rpi";
+      buildInputs = old.buildInputs ++ [ final.dav1d ];
+      cmakeFlags =
+        let
+          enableFeature =
+            enable: feature:
+            assert (prev.lib.isString feature);
+            "-DENABLE_${feature}=${if enable then "ON" else "OFF"}";
+        in
+        old.cmakeFlags
+        ++ [
+          "-DENABLE_INTERNAL_DAV1D=OFF"
+        ]
+        ++ [
+          # inspired by being hardcoded in libreelec
+          # leaving because this is potentially due to performance considerations
+          "-DENABLE_LCMS2=OFF"
+        ]
+        ++ [
+          (enableFeature true "NEON")
+          (enableFeature false "VAAPI")
+        ]
+        ++ [
+          "-DENABLE_CEC=ON"
+          "-DENABLE_AVAHI=ON"
+          #-DAPP_RENDER_SYSTEM=
+        ];
+    })).override
+      {
+        vdpauSupport = false;
+      };
 
   kodi-gbm = final.kodi.override {
     gbmSupport = true;
@@ -88,18 +96,17 @@ final: prev: {
     # renderSystem = "gles";
   };
 
-
   libcamera = final.libcamera_rpi;
 
   libcamera_rpi = prev.libcamera.overrideAttrs (old: rec {
     pname = old.pname + "-rpi";
-    version = "0.6.0+rpt20251202";
+    version = "0.7.0+rpt20260205";
 
     src = prev.fetchFromGitHub {
       owner = "raspberrypi";
       repo = "libcamera";
       rev = "v${version}";
-      hash = "sha256-sJKzmeeXD/66P5o+X9w3J2gwxDNsdBUdXEqU6goJdN4=";
+      hash = "sha256-ZSKNeFDedqzcVxoLPap2dMjq+F3C1eQ+HikEKuGBOyM=";
     };
 
     mesonFlags = old.mesonFlags ++ [
@@ -112,6 +119,7 @@ final: prev: {
       "-Dcam=disabled"
       "-Dpycamera=enabled"
       (prev.lib.mesonEnable "libunwind" false)
+      (prev.lib.mesonEnable "rpi-awb-nn" false) # needs tensorflow-lite
     ];
 
     meta = old.meta // {
@@ -122,14 +130,14 @@ final: prev: {
 
   vlc = prev.vlc.overrideAttrs (old: {
     pname = old.pname + "-rpi";
-    version = "3.0.22-0+rpt1";
+    version = "3.0.23";
 
     # https://github.com/RPi-Distro/vlc/commits/pios/trixie
     src = prev.fetchFromGitHub {
       owner = "RPi-Distro";
       repo = "vlc";
-      rev = "1e4f72f9f7af4de546c90062c248f6174af69f28";
-      hash = "sha256-uuCRpv+tZ63KGOQJ9eejx7WNfzWpTAMkxoLGQNj0og0=";
+      rev = "88272ce2fbf0ef1671ea64bda9eb6b44fdc4391f";
+      hash = "sha256-/BTXZX8BG1B9FOetYbfE8kAkZRN+2LOy1FDgwLEwucw=";
     };
   });
 
