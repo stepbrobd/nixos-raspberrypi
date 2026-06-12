@@ -532,7 +532,11 @@ in
         system = {
           build.installBootLoader = builder.${cfg.bootloader};
           boot.loader.id = "raspberrypi-${cfg.bootloader}";
-          boot.loader.kernelFile = config.boot.kernelPackages.kernel.target;
+          boot.loader.kernelFile =
+            if lib.versionAtLeast lib.trivial.release "26.05" then
+              config.boot.kernelPackages.kernel.target
+            else
+              pkgs.stdenv.hostPlatform.linux-kernel.target;
         };
       }
     )
