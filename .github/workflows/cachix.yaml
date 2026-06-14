@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v14
+      - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
         with:
           name: "${{ secrets.CACHIX_CACHE_NAME }}"
           # # if you chose signing key for write access
@@ -61,7 +61,7 @@ jobs:
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v14
+      - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
         with:
           name: "${{ secrets.CACHIX_CACHE_NAME }}"
           # # if you chose signing key for write access
@@ -88,7 +88,7 @@ jobs:
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v14
+      - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
         with:
           name: "${{ secrets.CACHIX_CACHE_NAME }}"
           # # if you chose signing key for write access
