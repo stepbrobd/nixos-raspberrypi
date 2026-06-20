@@ -10,13 +10,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "raspberrypi-utils";
-  version = "unstable-2025-11-19";
+  version = "0-unstable-2026-06-17";
 
   src = fetchFromGitHub {
     owner = "raspberrypi";
     repo = "utils";
-    rev = "6e0779b1c552976e0da2374c0325a8c9c77b6010";
-    hash = "sha256-gzcQdchmYZ8NSGDnozUK3JgEQAO5b7GCOzQeRL0nDM8";
+    rev = "61371fa6d93463c5451131f7bb68ae145aaf1e7a";
+    hash = "sha256-txRvlhRF9dO+seOqqH/NuTpUzuKHSVBHcsFUpexPOds=";
   };
 
   buildInputs = [
