@@ -6,6 +6,7 @@
   fetchFromGitHub,
   cmake,
   dtc,
+  ncurses,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -21,6 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [
     dtc # dtmerge depends on libfdt
+    ncurses
   ];
 
   nativeBuildInputs = [ cmake ];
