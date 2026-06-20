@@ -45,7 +45,7 @@ jobs:
           # - pisugar2-kmod
           - pisugar-power-manager-rs # ~3 minutes
 
-          - ffmpeg_7-headless # ~5 minutes
+          - ffmpeg_8-headless # v7 took ~5 minutes
 
           # - kodi
           - kodi-gbm # ~40 minutes
@@ -80,7 +80,7 @@ jobs:
       matrix:
         package:
           # Depends on ffmpeg-headless. Avoid concurrent builds to prevent OOM errors.
-          - ffmpeg_7
+          - ffmpeg_8
           - vlc
 
     runs-on: ubuntu-24.04-arm
