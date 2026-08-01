@@ -1,8 +1,7 @@
 [
   {
     modDirVersion = "6.18.34";
-    tag = "unstable_20260604";
-    rev = "c8c7494100e99ee05b11aaa4f0588a223a63d1af";
+    tag = "stable_20260609";
     srcHash = "sha256-ok++36dh9o4e7AC5RErW00/r23rGxufe0PYXz5Dzy5U=";
   }
   {
