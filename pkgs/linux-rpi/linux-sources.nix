@@ -1,5 +1,11 @@
 [
   {
+    modDirVersion = "6.18.42";
+    tag = "unstable_20260806";
+    rev = "8c0da7c3bb97a2e0aaa0d405d3052786c1469b35";
+    srcHash = "sha256-CMjVylJFgiX9TRQ+drFr/OicaKp0W7r0idIKdMSIuGA=";
+  }
+  {
     # https://github.com/raspberrypi/linux/releases/tag/stable_20260724
     modDirVersion = "6.18.39";
     tag = "stable_20260724";
